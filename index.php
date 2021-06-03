@@ -8,6 +8,11 @@ if(isset($_GET['nologin'])){
   unset($_GET['nologin']);
 }
 
+if(isset($_GET['permission'])){
+  echo "<h3>Keine Berechtigung!</h3>";
+  unset($_GET['permission']);
+}
+
 if(isset($_GET['login'])){
   $loginSchalter = true;
   $error = "";
@@ -42,20 +47,18 @@ if(isset($_GET['login'])){
 
       } else {
         /* Je nachdem könnte man hier auf eine Seite weiterleiten,
-         wo man entscheiden kann, mit welcher Rolle man sich einloggen
+          wo man entscheiden kann, mit welcher Rolle man sich einloggen
           möchte. Aktuell macht er das selbe wie oben */
         header('Location: ' . $roles[0]['role_name_id'] . '.php');
       }
 
-      //echo var_dump($roles);
 
-
-      //header('Location: content.php');
     } else {
       $error .= "Login fehlgeschlagen!";
     }
   }
 
+} else {
 
 }
 

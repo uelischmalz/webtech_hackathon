@@ -68,4 +68,37 @@ function checkRole($user_id){
   }
 }
 
+function checkPermission($user_id){
+  $pdo = dbVerbindungErzeugen();
+
+  $sql = "SELECT role_name_id FROM user_has_roles WHERE user_id = :userId";
+
+  $stmt = $pdo->prepare($sql);
+
+  $result = $stmt->execute(array('userId' => $user_id));
+
+  $user = $stmt->fetchAll();
+
+  $roleArray = array();
+
+  foreach($user AS $role){
+    foreach($role AS $roleName){
+      array_push($roleArray, $roleName);
+    }
+  }
+
+  $filename = basename($_SERVER['PHP_SELF']);
+
+
+  $file = substr($filename, 0, -4);
+
+  $allowed = array_search($file, $roleArray);
+
+  if($allowed === false){
+    return false;
+  } else {
+    return true;
+  }
+}
+
 ?>
