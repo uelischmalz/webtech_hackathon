@@ -64,34 +64,49 @@ if(isset($_GET['login'])){
 
  ?>
 
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Login-Prozess</title>
-  </head>
-  <body>
+ <!DOCTYPE html>
+ <html lang="de" dir="ltr">
+   <head>
+     <meta charset="utf-8">
+     <link rel="stylesheet" href="styles.css">
+     <title>Login</title>
+   </head>
+   <body>
+     <header>
+       <a href="index.html"><img src="img/logo_schrift_hell.png" alt="Logo" id="logo"></a>
+       <h1>Hackathon Minor Webtech 2021</h1>
+     </header>
+     <div id="container">
+       <nav>
+         <a href="admin.php">Admin</a><br><br><br><br>
+         <a href="service.php">Service</a><br><br><br><br>
+         <a href="laeufer.php">Läufer</a><br><br><br><br>
+         <a href="kueche.php">Küche</a><br><br><br><br>
+         <a href="logout.php">Logout</a>
+       </nav>
+     <div id="content">
 
-    <h1>Login</h1>
+      <h1>Login</h1>
 
-    <div id="loginFormular">
-      <form action="<?php echo $_SERVER['PHP_SELF'] ?>?login=1" method="post">
+      <div id="loginFormular">
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>?login=1" method="post">
 
-        <input class="textfeld" type="email" name="email" placeholder="E-Mail">
+          <input class="textfeld" type="email" name="email" placeholder="E-Mail">
 
-        <input class="textfeld" type="password" name="password" placeholder="Passwort">
+          <input class="textfeld" type="password" name="password" placeholder="Passwort">
 
-        <button class="submitButton" type="submit" name="loginSender" value="einloggen">Anmelden</button>
+          <button class="submitButton" type="submit" name="loginSender" value="einloggen">Anmelden</button>
 
-      </form>
-      <a href="forgotten.php"><p>Passwort vergessen</p></a>
-      <?php
-      if(isset($error)){
-        echo "<h3>" . $error . "</h3>";
-      }
+        </form>
+        <a href="forgotten.php"><p>Passwort vergessen</p></a>
+        <?php
+        if(isset($error)){
+          echo "<h3>" . $error . "</h3>";
+        }
 
-       ?>
+         ?>
 
+      </div>
     </div>
 
   </body>

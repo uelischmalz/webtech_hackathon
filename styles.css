@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+
+}
+
+header {
+  background-color: #2A2C2D;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 120px;
+  padding: 20px;
+}
+
+#logo {
+  height: 100px;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+nav {
+  width: 20vw;
+  padding: 50px;
+  background-color: #5ABEBA;
+  height: 100vw;
+}
+
+nav a {
+  text-decoration: none;
+  background-color: #2A2C2D;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+#content {
+  padding: 50px;
+  width: 80vw:
+}
+
+form {
+  width: 100%;
+}
+
+input, select {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+label {
+  margin-top: 20px;
+}
+
+input[type="submit" i] {
+  background-color: #2A2C2D;
+  color: white;
+}
+
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td, th {
+  text-align: left;
+  padding: 0.5em 1em;
+  border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.checkbox-div{
+  flex-direction: row;
+}
+
+.checkbox-div label {
+  width: 50%;
+}
+
+.checkbox-div input {
+  width: 50%;
+}

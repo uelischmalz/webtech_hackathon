@@ -15,9 +15,25 @@ if(!(checkPermission($_SESSION['user_id']))){
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Serviceboy</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Läufer</title>
   </head>
   <body>
-    <h1>Läuferbereich</h1>
+    <header>
+      <a href="index.html"><img src="img/logo_schrift_hell.png" alt="Logo" id="logo"></a>
+      <h1>Hackathon Minor Webtech 2021</h1>
+    </header>
+    <div id="container">
+      <nav>
+        <a href="admin.php">Admin</a><br><br><br><br>
+        <a href="service.php">Service</a><br><br><br><br>
+        <a href="laeufer.php">Läufer</a><br><br><br><br>
+        <a href="kueche.php">Küche</a><br><br><br><br>
+        <a href="logout.php">Logout</a>
+      </nav>
+    <div id="content">
+      <h1>Läufer</h1>
+
+    </div>
   </body>
 </html>

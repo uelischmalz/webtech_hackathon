@@ -57,28 +57,40 @@ if(isset($_GET['reset'])){
     <html lang="de" dir="ltr">
       <head>
         <meta charset="utf-8">
-        <title>Login-Prozess</title>
+        <link rel="stylesheet" href="styles.css">
+        <title>Passwort zurücksetzen</title>
       </head>
       <body>
+        <header>
+          <a href="index.html"><img src="img/logo_schrift_hell.png" alt="Logo" id="logo"></a>
+          <h1>Hackathon Minor Webtech 2021</h1>
+        </header>
+        <div id="container">
+        <nav>
+          <a href="benutzer.php">Alle Benutzer</a><br><br><br><br>
+          <a href="neuer-benutzer.php">Neuer Benutzer</a>
+        </nav>
+        <div id="content">
 
-        <h1>Passwort zurücksetzen</h1>
+          <h1>Passwort zurücksetzen</h1>
 
-        <div id="resetFormular">
-          <form action="<?php echo $_SERVER['PHP_SELF'] ?>?reset=1" method="post">
+          <div id="resetFormular">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>?reset=1" method="post">
 
-            <input class="textfeld" type="email" name="email" placeholder="E-Mail">
+              <input class="textfeld" type="email" name="email" placeholder="E-Mail">
 
-            <button class="submitButton" type="submit" name="resetSender" value="zurücksetzen">Passwort zurücksetzen</button>
+              <button class="submitButton" type="submit" name="resetSender" value="zurücksetzen">Passwort zurücksetzen</button>
 
-          </form>
-          <a href="index.php"><p>zurück</p></a>
-          <?php
-          if(isset($error)){
-            echo "<h3>" . $error . "</h3>";
-          }
+            </form>
+            <a href="index.php"><p>zurück</p></a>
+            <?php
+            if(isset($error)){
+              echo "<h3>" . $error . "</h3>";
+            }
 
-           ?>
+             ?>
 
+          </div>
         </div>
 
       </body>
