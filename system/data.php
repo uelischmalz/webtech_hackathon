@@ -103,4 +103,46 @@ function checkPermission($user_id){
   }
 }
 
+function getUserId($email){
+  $pdo = dbVerbindungErzeugen();
+
+  $sql = "SELECT user_id FROM user WHERE email = :email";
+
+  $stmt = $pdo->prepare($sql);
+
+  $result = $stmt->execute(array('email' => $email));
+
+  $userID = $stmt->fetch();
+
+  if($userID !== false){
+    return $userID;
+  } else {
+    return false;
+  }
+}
+
+function addToken($user_id){
+
+  $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  $var_size = strlen($chars);
+  $token = "";
+
+    for( $x = 0; $x < 32; $x++ ) {
+        $random_str= $chars[ rand( 0, $var_size - 1 ) ];
+        $token .= $random_str;
+    }
+
+    $db = dbVerbindungErzeugen();
+  	$sql = "INSERT INTO token (user_id, token) VALUES (?, ?);";
+  	$stmt = $db->prepare($sql);
+  	$resultat = $stmt->execute(array($user_id, $token));
+    if($resultat){
+      return $token;
+    } else {
+      return false;
+    }
+  }
+
+
+
 ?>

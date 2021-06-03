@@ -84,6 +84,7 @@ if(isset($_GET['login'])){
         <button class="submitButton" type="submit" name="loginSender" value="einloggen">Anmelden</button>
 
       </form>
+      <a href="forgotten.php"><p>Passwort vergessen</p></a>
       <?php
       if(isset($error)){
         echo "<h3>" . $error . "</h3>";
