@@ -43,7 +43,9 @@ function login($email, $password){
 
   $user = $stmt->fetch();
 
-  if($user !== false && $password === $user['password']){
+  $passwordCheck = password_verify($password, $user['password']);
+
+  if($user !== false && $passwordCheck === true){
     return $user;
   } else {
     return false;
