@@ -21,6 +21,26 @@ if(!isset($_GET['token']) && !isset($_GET['userid'])){
       $resetSchalter = false;
     }
 
+    if(strlen($password) <= 4){
+      $error .= "Das Passwort muss mindestens 5 Zeichen lang sein. <br>";
+      $resetSchalter = false;;
+    }
+
+    $keineGrossbuchstaben = (strtolower($password) === $password);
+
+    if($keineGrossbuchstaben){
+      $error .= "Das Passwort muss mindestens einen Grossbuchstaben enthalten. <br>";
+      $resetSchalter = false;
+    }
+
+    $keineKleinbuchstaben = (strtoupper($password) === $password);
+
+    if($keineKleinbuchstaben){
+      $error .= "Das Passwort muss mindestens einen Kleinbuchstaben enthalten. <br>";
+      $resetSchalter = false;
+    }
+
+
     if(!empty($_POST['passwordRepeat'])){
       $passwordRepeat = $_POST['passwordRepeat'];
     } else {
