@@ -15,13 +15,14 @@ if(isset($_GET['reset'])){
 
   if($resetSchalter){
 
-    $user_id_array = getUserId($_POST['email']);
+    $user_id = getUserId($_POST['email']);
 
-    if($user_id_array['user_id']){
-      $token = addToken($user_id_array['user_id']);
+    if($user_id){
+      $token = addToken($user_id);
 
       if($token) {
           $error .= "Token gespeichert. <br>";
+          header('Location: reset-mail.php?token=' . $token . '&userid=' . $user_id);
       } else {
         $error .= "Passwortzurücksetzung fehlgeschlagen. <br>";
       }
@@ -67,8 +68,7 @@ if(isset($_GET['reset'])){
         </header>
         <div id="container">
         <nav>
-          <a href="benutzer.php">Alle Benutzer</a><br><br><br><br>
-          <a href="neuer-benutzer.php">Neuer Benutzer</a>
+          <?php require_once('blocks/navigation.php'); ?>
         </nav>
         <div id="content">
 

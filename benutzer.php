@@ -1,6 +1,15 @@
 <?php
-require_once('system/data.php');
-dbVerbindungErzeugen();
+session_start();
+require_once("system/data.php");
+
+if(!isset($_SESSION['user_id'])){
+  header('Location: index.php?nologin=1');
+}
+
+if(!(checkPermission($_SESSION['user_id']))){
+  header('Location: index.php?permission=0');
+}
+
 
 
 ?>
@@ -19,8 +28,7 @@ dbVerbindungErzeugen();
     </header>
     <div id="container">
     <nav>
-      <a href="benutzer.php">Alle Benutzer</a><br><br><br><br>
-      <a href="neuer-benutzer.php">Neuer Benutzer</a>
+      <?php require_once('blocks/navigation.php'); ?>
     </nav>
     <div id="content">
       <h1>Alle Benutzer</h1>

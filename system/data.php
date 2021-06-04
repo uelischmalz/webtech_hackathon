@@ -94,12 +94,20 @@ function checkPermission($user_id){
 
   $file = substr($filename, 0, -4);
 
+	$zusaetzlicheAdminSeite1 = "benutzer";
+	$zusaetzlicheAdminSeite2 = "neuer-benutzer";
+
+	if(array_search("admin", $roleArray) !== false){
+		array_push($roleArray, $zusaetzlicheAdminSeite1);
+		array_push($roleArray, $zusaetzlicheAdminSeite2);
+	}
+
   $allowed = array_search($file, $roleArray);
 
   if($allowed === false){
     return false;
   } else {
-    return true;
+    return $roleArray;
   }
 }
 
@@ -115,7 +123,7 @@ function getUserId($email){
   $userID = $stmt->fetch();
 
   if($userID !== false){
-    return $userID;
+    return $userID['user_id'];
   } else {
     return false;
   }
@@ -142,6 +150,37 @@ function addToken($user_id){
       return false;
     }
   }
+
+	function resetPassword($user_id, $token, $password){
+		//Token abgleichen
+		$passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
+		$dbToken = dbVerbindungErzeugen();
+		$sqlToken = "SELECT `time` FROM token WHERE user_id = :userId AND token = :token";
+		$stmtToken = $dbToken->prepare($sqlToken);
+
+  	$tokenTime = $stmtToken->execute(array('userId' => $user_id, 'token' => $token));
+		$tokenTime = $stmtToken->fetch();
+
+		if(strtotime($tokenTime['time']) > (time() - 3600) ) {
+
+				$db = dbVerbindungErzeugen();
+				$sql = "UPDATE user SET password = ? WHERE user_id = ?;";
+				$stmt = $db->prepare($sql);
+				$resultat = $stmt->execute(array($passwordHash, $user_id));
+
+				if($resultat){
+					return true;
+				} else {
+					return false;
+				}
+
+			return true;
+		} else {
+			return false;
+		}
+
+}
 
 
 

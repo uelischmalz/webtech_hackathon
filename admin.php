@@ -10,6 +10,8 @@ if(!(checkPermission($_SESSION['user_id']))){
   header('Location: index.php?permission=0');
 }
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
@@ -24,12 +26,9 @@ if(!(checkPermission($_SESSION['user_id']))){
       <h1>Hackathon Minor Webtech 2021</h1>
     </header>
     <div id="container">
+
       <nav>
-        <a href="admin.php">Admin</a><br><br><br><br>
-        <a href="service.php">Service</a><br><br><br><br>
-        <a href="laeufer.php">Läufer</a><br><br><br><br>
-        <a href="kueche.php">Küche</a><br><br><br><br>
-        <a href="logout.php">Logout</a>
+        <?php require_once('blocks/navigation.php'); ?>
       </nav>
     <div id="content">
       <h1>Admin-Bereich</h1>

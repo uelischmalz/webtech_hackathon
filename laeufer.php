@@ -25,11 +25,7 @@ if(!(checkPermission($_SESSION['user_id']))){
     </header>
     <div id="container">
       <nav>
-        <a href="admin.php">Admin</a><br><br><br><br>
-        <a href="service.php">Service</a><br><br><br><br>
-        <a href="laeufer.php">Läufer</a><br><br><br><br>
-        <a href="kueche.php">Küche</a><br><br><br><br>
-        <a href="logout.php">Logout</a>
+        <?php require_once('blocks/navigation.php'); ?>
       </nav>
     <div id="content">
       <h1>Läufer</h1>

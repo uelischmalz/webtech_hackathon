@@ -15,6 +15,7 @@ if(isset($_POST['email'])){
 }
 if(isset($_POST['password'])){
   $password = $_POST['password'];
+  $passwordgehasht = password_hash($password, PASSWORD_BCRYPT);
 }
 
 if(isset($_POST['role'])){
@@ -35,7 +36,7 @@ $stmt = $db->prepare($sql);
 // Prepared Statement mit array aus Variablenwerten ausführen.
 // (Werte müssen als Array übergeben werden und ersetzt Fragezeichen in $sql-Variable)
 // Reihenfolge der Variablenwerte muss der Reihenfolge der Fragezeichen in SQL-Variablen entsprechen.
-$stmt->execute(array($firstname, $lastname, $email, $password));
+$stmt->execute(array($firstname, $lastname, $email, $passwordgehasht));
 
 // mit lastInsertId() die DB-id des neuen Beitrags ermitteln und ausgeben
 echo $db->lastInsertId();
