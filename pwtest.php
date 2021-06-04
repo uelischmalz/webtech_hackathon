@@ -1,5 +1,5 @@
 <?php
-$password = "fgdDSAa";
+$password = "lSHaF";
 echo "Passwort:<br>";
 echo $password;
 
@@ -25,6 +25,23 @@ if($keineKleinbuchstaben){
   echo "Das Passwort muss mindestens einen Kleinbuchstaben enthalten.<br>";
 } else {
   echo "Das Passwort enthält mindestens einen Kleinbuchstaben.<br>";
+}
+
+$passwordArray = str_split($password);
+$enthaeltZahl = false;
+
+foreach ($passwordArray as $char) {
+  if(is_numeric($char)){
+    $enthaeltZahl = true;
+    break;
+  };
+
+}
+
+if(!$enthaeltZahl){
+  echo "Das Passwort muss mindestens einen Zahl enthalten.<br>";
+} else {
+  echo "Das Passwort enthält mindestens eine Zahl.<br>";
 }
 
 

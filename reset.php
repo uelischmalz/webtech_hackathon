@@ -40,6 +40,22 @@ if(!isset($_GET['token']) && !isset($_GET['userid'])){
       $resetSchalter = false;
     }
 
+    $passwordArray = str_split($password);
+    $enthaeltZahl = false;
+
+    foreach ($passwordArray as $char) {
+      if(is_numeric($char)){
+        $enthaeltZahl = true;
+        break;
+      };
+
+    }
+
+    if(!$enthaeltZahl){
+      $error .= "Das Passwort muss mindestens eine Zahl enthalten. <br>";
+      $resetSchalter = false;
+    }
+
 
     if(!empty($_POST['passwordRepeat'])){
       $passwordRepeat = $_POST['passwordRepeat'];

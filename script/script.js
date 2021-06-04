@@ -6,6 +6,7 @@ function neuenUserSpeichern(firstname, lastname, email, password, role){
   formData.append('lastname', lastname);      // Wert aus Fuktionsparameter
   formData.append('email', email);      // Wert aus Hauptvariablen
   formData.append('password', password);
+  formData.append('role', role);
   // fetch-Aufruf mit zusätzlichem ...
   fetch("system/neuerUserSpeichern.php",
     {
@@ -26,7 +27,7 @@ function neuenUserSpeichern(firstname, lastname, email, password, role){
 
 let speichernBtn = document.querySelector('#userSpeichern');
   speichernBtn.addEventListener("click", function(){
-  neuenUserSpeichern(firstname.value, lastname.value, email.value, password.value);
+  neuenUserSpeichern(firstname.value, lastname.value, email.value, password.value, role.value);
 })
 
 // neuenUserSpeichern("Anja", "Leu", "test@anja.ch", "testpasswort");
